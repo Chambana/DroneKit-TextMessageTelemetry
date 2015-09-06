@@ -1,5 +1,5 @@
 # Text Messaging Telemetry for DroneKit
-Command and Control APM Rovers (or other APM vehicles) via inexpensive text messaging from within DroneKit
+Control APM Rovers (or other APM vehicles) via inexpensive text messaging from within DroneKit
 
 Dependencies:  
 
@@ -32,6 +32,10 @@ How to launch text messaging telemetry between your APM Rover and Ground Station
         
         (inside mavproxy, enter the following) api start LaunchTelemetry.py  
         
+
+Supported Modems:
+
+    --Sierra 313u (AT&T 313u)
 
 
 
