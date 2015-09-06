@@ -3,9 +3,13 @@ Command and Control APM Rovers (or other APM vehicles) via inexpensive text mess
 
 Dependencies:  
     -- sudo pip install python-gsmmodem
+    
     -- sudo pip install pymavlink
+    
     -- sudo pip install pylzma
+    
     -- sudo pip install mavproxy
+    
     -- sudo pip install droneapi
 
 
