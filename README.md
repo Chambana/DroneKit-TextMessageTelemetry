@@ -38,5 +38,12 @@ Supported Modems:
     --Sierra 313u (AT&T 313u)
 
 
+Changelog: 
 
-5 Sep 2015 -- Under Development 
+    -- 5 Sep 2015 -- Under Development 
+    
+License information:
+
+    -- Copyright (C) 2015 Chambana
+
+    -- License: GNU Lesser General Public License, version 3 or later; see COPYING included in this archive for details.
