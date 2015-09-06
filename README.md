@@ -1,5 +1,5 @@
 # Text Messaging Telemetry for DroneKit
-Command and Control APM Rovers (or other APM vehicles) via inexpensive text messaging
+Command and Control APM Rovers (or other APM vehicles) via inexpensive text messaging from within DroneKit
 
 Dependencies:  
     -- sudo pip install python-gsmmodem
