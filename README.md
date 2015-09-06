@@ -16,12 +16,10 @@ How to launch text messaging telemetry between your APM Rover and Ground Station
         python LaunchTelemetry.py -ground
     --On the vehicle's companion computer, launch the script from Mavproxy/DroneKit:
         navigate to the directory where LaunchTelemetry and TextMessageTelemetryClass are located
-        sudo mavproxy --master=/dev/ACM0 --baudrate=115200  (this is for an APM/Pixhawk connected via USB. Use /dev/AMA0 for serial cable)
+        sudo mavproxy --master=/dev/ACM0 --baudrate=115200  (this is for an APM/Pixhawk connected via USB. Use /dev/AMA0 when using a serial cable)
         (inside mavproxy, enter the following) module load droneapi.module.api
         (inside mavproxy, enter the following) api start LaunchTelemetry.py  
 
 
 
-
-
-5 Sep 2015 -- Under Development and untested. 
+5 Sep 2015 -- Under Development 
