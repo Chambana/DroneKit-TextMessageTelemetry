@@ -1,5 +1,5 @@
 # Text Messaging Telemetry for DroneKit
-Control APM Rovers (or other APM vehicles) via inexpensive text messaging from within DroneKit
+Control Rovers, Copters, or Planes via inexpensive text messaging from within DroneKit
 
 Dependencies:  
 
@@ -33,9 +33,19 @@ How to launch text messaging telemetry between your APM Rover and Ground Station
         (inside mavproxy, enter the following) api start LaunchTelemetry.py  
         
 
-Supported Modems:
+Supported Hardware/Software Configuration:
 
-    --Sierra 313u (AT&T 313u)
+    * Ground Station
+        * Mac laptop/desktop
+        * APM Planner 2 software
+        * Sierra 313u (AT&T 313u) GSM modem
+        * AT&T's $2/day pay-as-you-go unlimited texting plan
+    
+    * Vehicle
+        * Raspberry Pi "companion computer" connected to autopilot via serial or USB cable
+        * APM 2.6 or Pixhawk autopilot
+        * Sierra 313u (AT&T 313u) GSM modem
+        * AT&T's $2/day pay-as-you-go unlimited texting plan
 
 
 Changelog: 
