@@ -103,7 +103,7 @@ class TextMessageTelemetry(object):
         try:
             self._PrepareModem()
         except Exception, err:
-            self.Logger("Modem Init failed", message_importance=1)
+            self.Logger("Modem Init failed"+str(err), message_importance=1)
             self._ModemConnection=None
 
     def _PrepareModem(self):

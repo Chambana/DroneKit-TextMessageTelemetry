@@ -125,19 +125,30 @@ def RunAsVehicle():
             if MavlinkMessage.get_type()=="BAD_DATA":
                 return
             print "Received:", MavlinkMessage.get_type(), "| Current MessageQueue length:", len(MessageQueue)
-            if MessageQueueLock.acquire(False)==False:
+
+            if "ACK" in MavlinkMessage.get_type():
+                #critical message, block until added to outgoing queue
+                print "Critical outgoing message, blocking.."
+                MessageQueueLock.acquire(True)
+            elif MessageQueueLock.acquire(False)==False:
                 print "MessageQueue was LOCKED, returning.."
                 return #another callback is processing a msg from autopilot.  Drop this message
             else:
-                #debug msg
                 print "MessageQueue was UNLOCKED. processing msg.."
+
             MessageQueue.append(MavlinkMessage)
             #print "MessageQueue len AFTER:", len(MessageQueue)
             if len(TextMessagingConnection.ConvertMavlinkToTextMessage(MessageQueue))>160:
                 print "MessageQueue Over 160, sending!"
                 MessageQueue.pop()
                 #TODO:  This should probably be a thread
-                TextMessagingConnection.SendTextMessageTelemetry(ListOfMavlinkMessages=MessageQueue,blocking=False)
+                block=False
+                for msg in MessageQueue:
+                    #check for critical msgs
+                    if "ACK" in msg.get_type():
+                        block=True
+                        break
+                TextMessagingConnection.SendTextMessageTelemetry(ListOfMavlinkMessages=MessageQueue,blocking=block)
                 MessageQueue=[]
                 MessageQueue.append(MavlinkMessage)
             MessageQueueLock.release()
