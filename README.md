@@ -43,6 +43,7 @@ Supported Hardware/Software Configuration:
 Changelog: 
 
     -- 5 Sep 2015 -- Under Development 
+    -- 14 Nov 2015 -- Updated to DroneKit version 2
     
 License information:
 
