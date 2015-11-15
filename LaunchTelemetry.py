@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # LaunchTelemetry.py
-# Summary:  Launches Text Message Telemetry from within DroneKit/Mavproxy
+# Summary:  Launches Text Message Telemetry from within DroneKit
 # ChamBana03@gmail.com
 
 import sys, os
