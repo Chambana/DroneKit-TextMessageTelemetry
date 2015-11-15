@@ -11,7 +11,8 @@ from pymavlink import mavlinkv10 as mavlink
 from TextMessageTelemetry import LocalGCScommunication
 from TextMessageTelemetry import TextMessageTelemetry
 import multiprocessing
-from droneapi.lib import VehicleMode, Location, Vehicle, Command
+from dronekit.lib import VehicleMode, Location, Vehicle, Command
+from dronekit import connect
 import threading
 
 
@@ -160,8 +161,14 @@ def RunAsVehicle():
 
     try:
         #Start DroneKit
-        api = local_connect()
-        vehicle = api.get_vehicles()[0]
+
+        #DroneKit ver. 1
+        #api = local_connect()
+        #vehicle = api.get_vehicles()[0]
+
+        #DroneKit ver. 2
+        vehicle = connect(AUTOPILOT_PATH, wait_ready=True)
+
         print "DroneKit init:  ", vehicle
 
         TextMessagingConnection = TextMessageTelemetry(GROUNDSTATION_PHONE_NUMBER, VEHICLE_MODEM_PATH, GROUNDSTATION_MODEM_BAUD, DEBUG_LEVEL=4)
