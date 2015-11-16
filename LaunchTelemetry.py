@@ -2,7 +2,7 @@
 
 # LaunchTelemetry.py
 # Summary:  Launches Text Message Telemetry from within DroneKit
-# ChamBana03@gmail.com
+# Chambana03@gmail.com
 
 import sys, os
 sys.path.append(os.getcwd())
@@ -69,6 +69,23 @@ def RunAsGroundStation():
             time.sleep(0.5)  #the GCS wants to be fed a vehicle heartbeat something like every second or it complains
 
     try:
+        print "Verifying initialization values..."
+        print "  -GROUNDSTATION PHONE NUMBER =",GROUNDSTATION_PHONE_NUMBER
+        print "  -VEHICLE PHONE NUMBER =",VEHICLE_PHONE_NUMBER
+        print "  -GROUNDSTATION MODEM PATH =", GROUNDSTATION_MODEM_PATH
+        print "  -GROUNDSTATION MODEM BAUD =", GROUNDSTATION_MODEM_BAUD
+        print "  -GCS SOFTWARE (E.G. MISSION PLANNER) LISTENING ON PORT", GCS_PORT
+        sys.stdout.write("Are these values correct? (y/n) ")
+        response = raw_input().lower()
+        if response == 'n':
+            print "Please input the correct values in LaunchTelemetry.py"
+            return
+        elif response == 'y':
+            print "launching telemetry..."
+        else:
+            print "invalid keystroke"
+            return
+
         LastIncomingHeartbeat = None  #Cached copy of last received heartbeat from vehicle
         LocalGCSconnection = LocalGCScommunication(GCSport=GCS_PORT, debug_level=4)
         TextMessagingConnection = TextMessageTelemetry(VEHICLE_PHONE_NUMBER, GROUNDSTATION_MODEM_PATH, VEHICLE_MODEM_BAUD, DEBUG_LEVEL=4)
@@ -159,13 +176,27 @@ def RunAsVehicle():
 
 
     try:
-        #Start DroneKit
+        print "Verifying initialization values..."
+        print "  -GROUNDSTATION PHONE NUMBER =",GROUNDSTATION_PHONE_NUMBER
+        print "  -VEHICLE PHONE NUMBER =",VEHICLE_PHONE_NUMBER
+        print "  -VEHICLE MODEM PATH =", VEHICLE_MODEM_PATH
+        print "  -VEHICLE MODEM BAUD =", VEHICLE_MODEM_BAUD
+        print "  -AUTOPILOT_PATH =", AUTOPILOT_PATH
+        print "  -SECONDS BETWEEN MAILBOX CHECKS =", SECONDS_BETWEEN_MAILBOX_CHECKS
 
-        #DroneKit ver. 1
-        #api = local_connect()
-        #vehicle = api.get_vehicles()[0]
+        sys.stdout.write("Are these values correct? (y/n) ")
+        response = raw_input().lower()
+        if response == 'n':
+            print "Please input the correct values in LaunchTelemetry.py"
+            return
+        elif response == 'y':
+            print "launching telemetry..."
+        else:
+            print "invalid keystroke"
+            return
 
-        #DroneKit ver. 2
+
+        #Start DroneKit ver.2
         vehicle = connect(AUTOPILOT_PATH, wait_ready=True)
 
         print "DroneKit init:  ", vehicle
@@ -202,11 +233,11 @@ else:
 
 
 if AM_I_GROUNDSTATION_OR_VEHICLE == "GROUNDSTATION":
-    print "Launching Ground Station Comms..."
+    print "\n\nLaunching Ground Station Comms..."
     RunAsGroundStation()
 
 if AM_I_GROUNDSTATION_OR_VEHICLE == "VEHICLE":
-    print "Launching Vehicle Comms..."
+    print "\n\nLaunching Vehicle Comms..."
     RunAsVehicle()
 
 
