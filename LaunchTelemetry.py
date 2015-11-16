@@ -11,7 +11,6 @@ from pymavlink import mavlinkv10 as mavlink
 from TextMessageTelemetry import LocalGCScommunication
 from TextMessageTelemetry import TextMessageTelemetry
 import multiprocessing
-from dronekit.lib import VehicleMode, Location, Vehicle, Command
 from dronekit import connect
 import threading
 
