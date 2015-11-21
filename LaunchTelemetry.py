@@ -7,9 +7,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 import time
-from pymavlink import mavlinkv10 as mavlink
-from TextMessageTelemetry import LocalGCScommunication
-from TextMessageTelemetry import TextMessageTelemetry
+from dronekit_texting.TextMessageTelemetry import LocalGCScommunication, TextMessageTelemetry
 import multiprocessing
 from dronekit import connect
 import threading
