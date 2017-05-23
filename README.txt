@@ -1,6 +1,8 @@
 Text Messaging Telemetry for DroneKit
 Control Rovers, Copters, or Planes via inexpensive text messaging from within DroneKit
 
+http://diydrones.com/profiles/blogs/text-message-telemetry-with-dronekit
+
 Dependencies:  
 
     -- pip install python-gsmmodem
