@@ -2,7 +2,7 @@
 
 # LaunchTelemetry.py
 # Summary:  Launches Text Message Telemetry from within DroneKit
-# Chambana03@gmail.com
+# chambana
 
 import sys, os
 sys.path.append(os.getcwd())
